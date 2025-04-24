@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .main-content{
+            margin-top:20px;
+            margin-left:105px;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    
+    <div style="display:flex;">  
+        <div class="sidebar" id="menu">
+            <i id="closeMenu" onclick="sidebarHide()" class="fa fa-arrow-left" aria-hidden="true"></i>
+        <div class="logo">
+            <br><br>
+            <ul class="menu">
+                <li  class="active"> <a href ="index.html"><i class="fa fa-home" aria-hidden="true"></i>
+                <span class="sidebarFont">Home</span></a>
+                </li>
+                <li> <a href ="profile.html"><i class="fas fa-user"></i>
+                <span class="sidebarFont">Profile</span></a>
+                </li>
+                <li> <a href ="declareResult.html"><i class="fas fa-file-invoice"></i>
+                <span class="sidebarFont">Declare Results</span></a>
+                </li>
+                <li> <a href ="userForm.html"><i class="fas fa-file-invoice"></i>
+                <span class="sidebarFont">Team Registration</span></a>
+                </li>
+                <li> <a href ="#gameSection"><i class="fa fa-gamepad" aria-hidden="true"></i>
+                <span class="sidebarFont" style="margin-left:-5px;">Games</span></a>
+                </li>
+                <li> <a href ="contact.html"><i class="fa fa-phone" aria-hidden="true"></i>
+                <span class="sidebarFont">Contact</span></a>
+                </li>
+                <li> <a href ="about.html"><i style="margin-left:3px;" class="fa fa-info" aria-hidden="true"></i>
+                <span class="sidebarFont" style="margin-left:9px;">About</span></a>
+                </li>
+                <li> <a href ="/logout"><i class="fas fa-sign-out-alt"></i>
+                <span class="sidebarFont" style="margin-left:-3px;">Logout</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<div style="width:100%;">   
+    <h1 id="username-placeholder" class="welcome-text"> </h1>
+    <i id='btnn' onclick="sidebarShow()" class="fa fa-bars" aria-hidden="true"></i>
+    
+    <a  href="createTournament.html"><button class="create-tournament-btn">Create Tournament</button></a>
+    <div class="dashboard-hero-section">
+        <div class="dashboard-section">
+            <h2 class="section-heading">Your Tournaments</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Participants</th>
+                        <th>Date</th>
+                        <!-- <th>Link</th> -->
+                    </tr>
+                </thead>
+                <tbody id="tournamentsBody">
+                    <!-- Table rows will be dynamically inserted here -->
+                </tbody>            
+            </table>
+        </div>
+
+        <div class="dashboard-section">
+            <h2 class="section-heading">Results</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Winner</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <!-- Table rows will be dynamically inserted here -->
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+
+    <div class="game-content" id="gameSection">
+        <!-- Content Goes Here -->
+        <div class="games-available">
+            Games
+        </div>
+        <!-- game section -->
+        <section class="games-section">
+
+            <div class="games1" id="here">
+                <div class="games-overlay1">
+                  <a href="game1.html"><p class="games-overlay-text1">vALORanT</p></a>
+                </div>
+            </div>
+            
+
+            <div class="games2">
+                <div class="games-overlay2">
+                  <a href="game2.html""><p class="games-overlay-text2">Counter-Strike 2</p></a>
+                </div>
+            </div>
+            
+
+            <div class="games3">
+                <div class="games-overlay3">
+                  <a href="game3.html"><p class="games-overlay-text3">PUBG</p></a>
+                </div>
+            </div>
+            
+
+            <div class="games4">
+                <div class="games-overlay4">
+                  <a href="game4.html"><p class="games-overlay-text4">WARZONE</p></a>
+                </div>
+            </div>
+            
+              
+            <!-- Add more game divs as needed -->
+        </section>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top:-40px;">
+        <div class="container">
+            <div style="">Follow us on 
+                &nbsp&nbsp<a href="https://www.facebook.com/" style="text-decoration:none; color:white"> <i class="fa fa-facebook-official"  aria-hidden="true"></i></a>
+                &nbsp&nbsp<a href="https://www.instagram.com/" style="text-decoration:none; color:white"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                &nbsp&nbsp<a href="https://www.x.com/" style="text-decoration:none; color:white"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                &nbsp&nbsp<a href="https://www.linkedin.com/" style="text-decoration:none; color:white"> <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                &nbsp&nbsp<a href="https://www.github.com/" style="text-decoration:none; color:white"> <i class="fa fa-github" aria-hidden="true"></i></a>
+            </div><br>
+            <p>&copy; 2024 Gaming Tournament Website. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</div> 
+</div>  
+
+
+
+    <script>
+        // Get username from URL parameter and display it
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        document.getElementById('username-placeholder').innerText = 'Welcome,\n ' + username;
+    </script>
+
+<script>
+    function sidebarShow(){
+        document.getElementById('menu').style.left='0%';
+    }
+
+    function sidebarHide(){
+        document.getElementById('menu').style.left='-270px';
+    }
+</script>
+
+<script>
+    async function fetchTournaments() {
+        const response = await fetch('/tournaments');
+        const tournaments = await response.json();
+        const tableBody = document.getElementById('tournamentsBody');
+        tableBody.innerHTML = ''; // Clear existing rows
+        tournaments.forEach(tournament => {
+            const row = document.createElement('tr');
+            var date = tournament.tDate.toString().substring(0,10);
+            row.innerHTML = `
+                <td>${tournament.tournamentID}</td>
+                <td>${tournament.tournamentName}</td>
+                <td>${tournament.participants+'/'+tournament.numberOfTeams}</td>
+                <td>${date}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    window.addEventListener('load', fetchTournaments);
+
+    async function fetchResults() {
+        const response = await fetch('/results');
+        const results = await response.json();
+        const tableBody = document.getElementById('resultsBody');
+        tableBody.innerHTML = ''; // Clear existing rows
+        results.forEach(result => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${result.tournamentID}</td>
+                <td>${result.tournamentName}</td>
+                <td>${result.winner}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    window.addEventListener('load', fetchResults);
+    
+</script>
+</body>
+</html>

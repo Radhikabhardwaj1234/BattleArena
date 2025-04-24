@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .top-left-box{
+            width: 200px; 
+        }
+        .login-container{
+            width:25%;
+        }
+
+</style>
+</head>
+<body class="login-body">
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <a href="javascript:history.back()" class="top-left-box">
+        <div class="box-content">
+            <p class="box-text">Dashboard</p>
+        </div>
+    </a>
+
+
+    <div class="login-container">
+
+        <h2>Profile</h2>
+
+        <form class="login-form" id="userFrom" action="/updateProfile" method="POST" onsubmit="return validatePassword()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" pattern="[A-Za-z\s]{1,20}" title="Please enter a valid name (up to 20 characters, letters and spaces only)">
+            </div>
+            <div class="form-group">
+                <label for="organisationName">Organisation Name:</label>
+                <input type="text" id="org-name" name="orgName" pattern="[A-Za-z0-9\s]{1,30}" title="Please enter a valid organisation name (up to 30 characters, letters, numbers and spaces only)">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number." required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm password:</label>
+                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+
+            <br>
+            <button type="submit"  class="login-button">Save Changes</button><br><br>
+
+        </form>
+
+    </div> 
+    
+    <script>
+        // Fetch users from the backend and populate the form fields
+        async function fetchUser() {
+        
+            const response = await fetch('/users');
+            const user = await response.json();
+        
+            document.getElementById('name').value = user.name;
+            document.getElementById('email').value = user.email;
+            document.getElementById('org-name').value = user.orgName;
+        
+        }
+
+        window.addEventListener('load',fetchUser);
+        
+    </script>
+    <script>
+
+        function validatePassword(){
+            var pass = document.getElementById("password").value;
+            var conpass = document.getElementById("confirm-password").value;
+
+            if(pass!=conpass){
+                alert("Passwords doesnt match");
+            }
+        }
+    </script>
+</body>
+</html>
